@@ -9,7 +9,7 @@ cliente y checkout con historial de pedidos.
 | Capa | Tecnología |
 |---|---|
 | Frontend | Angular 18 (standalone + signals) · Tailwind CSS 3.4 · TypeScript 5.5 |
-| Backend | FastAPI · Pydantic v2 · SQLAlchemy 2.0 · Uvicorn (Python 3.12) |
+| Backend | FastAPI · Pydantic v2 · SQLAlchemy 2.1 · Uvicorn (Python 3.12) |
 | Base de datos | PostgreSQL 16 |
 | Límite de tasa | Redis 7.2 (efímero, fail-open) |
 | Entorno | Docker Compose (db, redis, backend, frontend) |

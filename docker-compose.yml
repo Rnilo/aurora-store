@@ -67,7 +67,7 @@ services:
       DB_HOST: db
       DB_PORT: 5432
       DB_NAME: ${DB_NAME:-aurora_store}
-      SECRETO_JWT: ${SECRETO_JWT:-cambia-este-secreto-en-produccion}
+      SECRETO_JWT: ${SECRETO_JWT:-aurora-store-dev-cambia-este-secreto-antes-de-produccion-2026}
       TOKEN_EXPIRA_MINUTOS: ${TOKEN_EXPIRA_MINUTOS:-1440}
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:4200,http://localhost:8080}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}

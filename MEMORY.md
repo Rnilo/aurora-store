@@ -4,9 +4,10 @@
 
 - Repo nuevo creado desde cero replicando el stack de CompuStock ERP.
 - Feature 001 (vitrina + catálogo + carrito + checkout) implementada.
-- Backend con 9 tablas, 40 productos semilla, JWT propio y límite de tasa Redis fail-open.
+- Backend con 9 tablas, 48 productos semilla, JWT propio y límite de tasa Redis fail-open.
 - Frontend Angular 18 standalone + Tailwind con home estilo retail, mega menú, catálogo
   con filtros, detalle, carrito persistente, favoritos, login/registro y mis pedidos.
+- `pytest`: 25 passed. `npm run build`: en verde (2026-11-19).
 
 ## Decisiones
 
@@ -22,5 +23,9 @@
 ## Errores a evitar
 
 - No usar `Numeric` para precios: el contrato usa enteros.
+- No escribir `[class.text-tinta/20]` en templates: la `/` rompe el parser de Angular.
+  Usar `[class]="cond ? 'a/b' : 'c'"`.
+- No escribir `@` literal en un template (correos): usar `&#64;`.
+- No declarar `#ref` con el mismo nombre que una señal de la clase (ej. `#filtros`).
 - No confiar en `localhost` para Redis en Windows: publicar en `127.0.0.1:6380`.
 - No editar `dist/` ni `node_modules/`.

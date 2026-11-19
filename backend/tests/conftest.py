@@ -3,7 +3,7 @@
 import os
 
 os.environ["LIMITE_TASA_HABILITADO"] = "false"
-os.environ["SECRETO_JWT"] = "secreto-de-pruebas"
+os.environ["SECRETO_JWT"] = "secreto-de-pruebas-con-longitud-suficiente-hs256"
 
 from decimal import Decimal  # noqa: E402
 
