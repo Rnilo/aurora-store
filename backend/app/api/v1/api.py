@@ -1,0 +1,10 @@
+"""Router principal de la version 1 de la API."""
+
+from fastapi import APIRouter
+
+from app.api.v1.endpoints import auth, catalogo, pedidos
+
+api_router = APIRouter()
+api_router.include_router(catalogo.router)
+api_router.include_router(auth.router)
+api_router.include_router(pedidos.router)

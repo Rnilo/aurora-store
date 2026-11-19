@@ -1,0 +1,116 @@
+services:
+  # ============================================
+  # DATABASE: PostgreSQL 16
+  # ============================================
+  db:
+    image: postgres:16-alpine
+    container_name: aurora_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${DB_NAME:-aurora_store}
+    ports:
+      - "${DB_PORT:-5433}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres} -d ${DB_NAME:-aurora_store}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - aurora_network
+
+  # ============================================
+  # REDIS: almacen efimero del limite de tasa
+  # ============================================
+  redis:
+    image: redis:7.2-alpine
+    container_name: aurora_redis
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --save
+      - ""
+      - --appendonly
+      - "no"
+      - --maxmemory
+      - 64mb
+      - --maxmemory-policy
+      - allkeys-lru
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-6380}:6379"
+    tmpfs:
+      - /data:size=64m
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - aurora_network
+
+  # ============================================
+  # BACKEND: FastAPI
+  # ============================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: aurora_backend
+    restart: unless-stopped
+    environment:
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-postgres}
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-aurora_store}
+      SECRETO_JWT: ${SECRETO_JWT:-cambia-este-secreto-en-produccion}
+      TOKEN_EXPIRA_MINUTOS: ${TOKEN_EXPIRA_MINUTOS:-1440}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:4200,http://localhost:8080}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      LIMITE_TASA_HABILITADO: ${LIMITE_TASA_HABILITADO:-true}
+      LIMITE_TASA_MAX_PETICIONES: ${LIMITE_TASA_MAX_PETICIONES:-120}
+      LIMITE_TASA_VENTANA_SEGUNDOS: ${LIMITE_TASA_VENTANA_SEGUNDOS:-60}
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./backend/app:/app/app
+    command: >
+      sh -c "uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload --no-access-log"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+    networks:
+      - aurora_network
+
+  # ============================================
+  # FRONTEND: Angular servido por Nginx
+  # ============================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aurora_frontend
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - aurora_network
+
+volumes:
+  postgres_data:
+
+networks:
+  aurora_network:
+    driver: bridge
