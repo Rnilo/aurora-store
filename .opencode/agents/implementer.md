@@ -22,7 +22,7 @@ Eres el agente implementador (implementer) de Aurora Store. Ejecutas UNA tarea d
 - Ejecuta las suites y nunca des la tarea por hecha con tests en rojo:
   - Backend: `cd backend && python -m pytest` (la suite corre sobre SQLite en memoria, no necesita el contenedor `db`).
   - Frontend: `cd frontend && npm run build` (verificación de tipos y build de producción; AGENTS.md §5).
-- Si hay cambios visuales, déjalos anotados: la verificación de UI es el recorrido en 4200 y 8080 (AGENTS.md §5 y §9.5) y, si está disponible, el MCP chrome-devtools.
+- Si hay cambios visuales, déjalos anotados: la verificación de UI es el recorrido en 4200 y 8081 (AGENTS.md §5 y §9.5) y, si está disponible, el MCP chrome-devtools.
 - Marca la tarea como hecha (`[ ]` → `[x]`) en `tasks.md` en el momento y PARA. No empieces la siguiente.
 - Si la tarea o el plan son incorrectos o imposibles, PARA y explícalo. No improvises una solución distinta.
 - Respeta las reglas de dominio: lógica de negocio en `backend/app/services/` (nunca en los routers), Pydantic v2 (`model_config`, no `class Config`), SQLAlchemy tipado (nunca SQL raw), Angular standalone (nunca `NgModule`), solo Tailwind en estilos.

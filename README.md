@@ -41,11 +41,11 @@ Servicios:
 
 | Servicio | URL |
 |---|---|
-| Tienda (nginx) | http://localhost:8080 |
+| Tienda (nginx) | http://localhost:8081 |
 | Tienda (dev server) | http://localhost:4200 (`cd frontend && npm start`) |
-| API + Swagger | http://localhost:8000/docs |
-| PostgreSQL | `localhost:5433` (contenedor `aurora_db`) |
-| Redis | `127.0.0.1:6380` (contenedor `aurora_redis`) |
+| API + Swagger | http://localhost:8001/docs |
+| PostgreSQL | `localhost:5434` (contenedor `aurora_db`) |
+| Redis | `127.0.0.1:6381` (contenedor `aurora_redis`) |
 
 En el **primer arranque con el volumen vacío**, PostgreSQL ejecuta en orden alfabético
 `database/01_esquema.sql` (DDL de 9 tablas) y `database/02_datos_semilla.sql`

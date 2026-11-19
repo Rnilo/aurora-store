@@ -5,10 +5,10 @@
 ```
 Navegador
    │
-   ├── Angular 18 (nginx :8080 / dev server :4200)
-   │        └── /api/* ──proxy──▶ FastAPI :8000
-   │                                ├── PostgreSQL 16 :5433
-   │                                └── Redis 7.2 :6380 (límite de tasa)
+   ├── Angular 18 (nginx :8081 / dev server :4200)
+   │        └── /api/* ──proxy──▶ FastAPI :8001
+   │                                ├── PostgreSQL 16 :5434
+   │                                └── Redis 7.2 :6381 (límite de tasa)
    └── Imágenes SVG servidas desde frontend/public/img
 ```
 
@@ -18,7 +18,7 @@ Navegador
 - Estado con `signal()` / `computed()`: carrito, favoritos, sesión, avisos.
 - Tailwind CSS 3.4; prohibido `styles: []` y CSS quemado en templates.
 - Rutas lazy (`loadComponent`) en `src/app/features/`.
-- `proxy.conf.json` redirige `/api` a `http://localhost:8000` en desarrollo.
+- `proxy.conf.json` redirige `/api` a `http://localhost:8001` en desarrollo.
 - Interceptor `tokenInterceptor` adjunta el Bearer desde `localStorage`.
 - `sesionGuard` protege `/checkout` y `/mis-pedidos` y conserva el retorno.
 
@@ -78,9 +78,9 @@ Filtros de `/productos`: `q`, `categoria` (incluye subcategorías), `marca`,
 | Servicio | Local |
 |---|---|
 | Frontend dev | http://localhost:4200 |
-| Frontend nginx | http://localhost:8080 |
-| API / Swagger | http://localhost:8000/docs |
-| PostgreSQL | localhost:5433 / `aurora_store` |
-| Redis | 127.0.0.1:6380 |
+| Frontend nginx | http://localhost:8081 |
+| API / Swagger | http://localhost:8001/docs |
+| PostgreSQL | localhost:5434 / `aurora_store` |
+| Redis | 127.0.0.1:6381 |
 
 La base se reconstruye con `docker compose down -v && docker compose up -d`.

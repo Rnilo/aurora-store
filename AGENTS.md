@@ -22,13 +22,13 @@ código suelto: cada cambio en `backend/` o `frontend/` nace de una spec en
 - **Frontend**: Angular 18.2 (Standalone Components, Signals, TypeScript 5.5, Tailwind CSS 3.4).
 - **Backend**: FastAPI 0.142 + Uvicorn (Python 3.12, Pydantic v2, SQLAlchemy 2.1 con
   psycopg2 — síncrono, pydantic-settings).
-- **Base de Datos**: PostgreSQL 16 (Docker Compose, puerto local 5433; base `aurora_store`).
+- **Base de Datos**: PostgreSQL 16 (Docker Compose, puerto local 5434; base `aurora_store`).
 - **Límite de tasa**: Redis 7.2-alpine efímero, ventana fija de 60 s y 120 peticiones por
   IP sobre `/api/v1/*`, **fail-open**. Config en `backend/app/core/config.py`.
 - **Autenticación**: JWT HS256 emitido por el propio backend con PyJWT; contraseñas con
   PBKDF2-SHA256 (stdlib, sin dependencias extra). El token viaja como `Bearer` y Angular lo
   guarda en `localStorage`.
-- **Entorno local**: Docker Compose levanta `db`, `redis`, `backend` (8000) y `frontend` (8080).
+- **Entorno local**: Docker Compose levanta `db`, `redis`, `backend` (8001) y `frontend` (8081).
 
 ## 4. Estructura del Espacio de Trabajo
 
@@ -50,14 +50,14 @@ Rutas relativas a la raíz del repo:
 
 - Levantar todo: `docker compose up -d`
 - Reset de base: `docker compose down -v` y `docker compose up -d` (`reset-db.cmd`/`.ps1`)
-- Backend dev: `cd backend && uvicorn app.main:app --reload --port 8000`
-- Frontend dev: `cd frontend && npm start` (puerto 4200, con proxy a `:8000`)
+- Backend dev: `cd backend && uvicorn app.main:app --reload --port 8001`
+- Frontend dev: `cd frontend && npm start` (puerto 4200, con proxy a `:8001`)
 - Backend tests: `cd backend && pytest` (SQLite en memoria, no requiere Docker)
 - Frontend build de verificación: `cd frontend && npm run build` (es la verificación de
   tipos y de plantillas; el proyecto no tiene tests unitarios de frontend)
 
 **Dos puertos del frontend, y no son lo mismo.** `4200` es el dev server y siempre sirve el
-código actual. `8080` es el contenedor nginx con un **build congelado en la imagen**: para
+código actual. `8081` es el contenedor nginx con un **build congelado en la imagen**: para
 ver cambios hay que reconstruir (`docker compose build frontend` + `up -d frontend`).
 El backend sí se actualiza solo (volumen montado + `--reload`).
 

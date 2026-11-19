@@ -42,7 +42,7 @@ Si la petición es pequeña y no toca `backend/` ni `frontend/` (docs, config, s
 4. **Implementación**: llama a @implementer **UNA vez por tarea** (T1, T2…), en orden. Tras cada tarea comprueba en su respuesta que `pytest` y `npm run build` están en verde; si no, para y avisa al usuario.
 5. **Validación**: pide a @reviewer que valide la spec AC por AC.
 6. **Correcciones**: si @reviewer devuelve `VEREDICTO: CAMBIOS NECESARIOS`, vuelve a @implementer con la lista exacta y después otra vez a @reviewer. Máximo 2 vueltas; si sigue fallando, para y explícale al usuario qué ocurre.
-7. **Cierre**: resume qué se ha hecho, el veredicto de @reviewer y lo pendiente. Recuerda al usuario que una feature solo se cierra con el recorrido en los dos puertos (AGENTS.md §5 y §9.5: 4200 funcional y 8080 tras reconstruir la imagen) y que actualice `MEMORY.md`.
+7. **Cierre**: resume qué se ha hecho, el veredicto de @reviewer y lo pendiente. Recuerda al usuario que una feature solo se cierra con el recorrido en los dos puertos (AGENTS.md §5 y §9.5: 4200 funcional y 8081 tras reconstruir la imagen) y que actualice `MEMORY.md`.
 
 ## Cambios de requisitos
 

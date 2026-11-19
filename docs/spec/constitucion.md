@@ -36,4 +36,4 @@ persona pueda levantarlo con `docker compose up -d` y entenderlo.
 2. `npm run build` sin errores.
 3. Criterios de aceptación marcados con su evidencia.
 4. `MEMORY.md` actualizado.
-5. Recorrido funcional en `http://localhost:4200` (o `8080` tras reconstruir la imagen).
+5. Recorrido funcional en `http://localhost:4200` (o `8081` tras reconstruir la imagen).

@@ -8,6 +8,10 @@
 - Frontend Angular 18 standalone + Tailwind con home estilo retail, mega menú, catálogo
   con filtros, detalle, carrito persistente, favoritos, login/registro y mis pedidos.
 - `pytest`: 25 passed. `npm run build`: en verde (2026-11-19).
+- Docker Compose verificado el 2026-11-19: API `:8001`, tienda `:8081`, PostgreSQL
+  `:5434`, Redis `:6381` (se movieron para no chocar con CompuStock ERP). Recorrido
+  completo home → catálogo → detalle → carrito → login → cupón `BIENVENIDO10` →
+  pedido creado → historial, sin errores de consola.
 
 ## Decisiones
 
@@ -27,5 +31,6 @@
   Usar `[class]="cond ? 'a/b' : 'c'"`.
 - No escribir `@` literal en un template (correos): usar `&#64;`.
 - No declarar `#ref` con el mismo nombre que una señal de la clase (ej. `#filtros`).
-- No confiar en `localhost` para Redis en Windows: publicar en `127.0.0.1:6380`.
+- No confiar en `localhost` para Redis en Windows: publicar en `127.0.0.1:6381`.
+- No reutilizar los puertos de CompuStock ERP: Aurora usa `8081`, `8001`, `5434` y `6381`.
 - No editar `dist/` ni `node_modules/`.

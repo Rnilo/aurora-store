@@ -27,4 +27,4 @@
 - [x] T18 `pytest` en verde (25 passed)
 - [x] T19 `npm run build` sin errores
 - [x] T20 Recorrido funcional documentado en la spec
-- [ ] T21 Reconstruir imagen del frontend y humo en `:8080`
+- [x] T21 Reconstruir imagen del frontend y humo en `:8081` (API `:8001`, PostgreSQL `:5434`, Redis `:6381`)

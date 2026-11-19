@@ -26,7 +26,7 @@
         "npx",
         "-y",
         "@modelcontextprotocol/server-postgres",
-        "postgresql://postgres:postgres@localhost:5433/aurora_store"
+        "postgresql://postgres:postgres@localhost:5434/aurora_store"
       ],
       "enabled": true
     },

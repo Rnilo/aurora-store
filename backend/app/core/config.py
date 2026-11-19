@@ -17,16 +17,16 @@ class Ajustes(BaseSettings):
     db_user: str = "postgres"
     db_password: str = "postgres"
     db_host: str = "localhost"
-    db_port: int = 5433
+    db_port: int = 5434
     db_name: str = "aurora_store"
 
-    secreto_jwt: str = "cambia-este-secreto-en-produccion"
+    secreto_jwt: str = "aurora-store-dev-cambia-este-secreto-antes-de-produccion-2026"
     algoritmo_jwt: str = "HS256"
     token_expira_minutos: int = 1440
 
-    allowed_origins: str = "http://localhost:4200,http://localhost:8080"
+    allowed_origins: str = "http://localhost:4200,http://localhost:8081"
 
-    redis_url: str = "redis://127.0.0.1:6380/0"
+    redis_url: str = "redis://127.0.0.1:6381/0"
     limite_tasa_habilitado: bool = True
     limite_tasa_max_peticiones: int = 120
     limite_tasa_ventana_segundos: int = 60

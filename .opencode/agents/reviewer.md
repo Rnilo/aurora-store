@@ -48,7 +48,7 @@ Solo detecta: no propongas soluciones todavía.
 
 1. Lee `spec.md`, `plan.md`, `tasks.md` y los cambios (`git diff`, `git status`).
 2. Ejecuta las suites: `python -m pytest` en `backend/` y `npm run build` en `frontend/` (verificación de tipos y build de producción; AGENTS.md §5).
-3. Recorre la spec AC por AC: qué test lo cubre y su resultado. Los AC de interfaz que las suites no cubren, verifícalos con el MCP chrome-devtools si está disponible (consola limpia, vista móvil de 375 px); si no lo está, indícalos como verificación manual pendiente en 4200 y 8080 (AGENTS.md §5 y §9.5).
+3. Recorre la spec AC por AC: qué test lo cubre y su resultado. Los AC de interfaz que las suites no cubren, verifícalos con el MCP chrome-devtools si está disponible (consola limpia, vista móvil de 375 px); si no lo está, indícalos como verificación manual pendiente en 4200 y 8081 (AGENTS.md §5 y §9.5).
 4. Comprueba los criterios de finalización de la spec, la constitución y las convenciones de AGENTS.md §6.
 
 Empieza siempre con una de estas dos líneas:

@@ -100,7 +100,7 @@ VALUES
 
   (9, 10, 11, 'Teclado mecánico Zenit K7', 'teclado-mecánico-zenit-k7',
    'Switches rojos silenciosos, retroiluminacion RGB y reposamunecas magnetico. Layout en espanol.',
-   79990, 59990, 35, 'AUR-0009', '/img/productos/teclado-mecánico-zenit-k7.svg', 4.5, 142, FALSE),
+   79990, 59990, 35, 'AUR-0009', '/img/productos/teclado-mecanico-zenit-k7.svg', 4.5, 142, FALSE),
 
   (10, 11, 3, 'Audífonos Lumen Air ANC', 'audifonos-lumen-air-anc',
    'Cancelacion activa de ruido, 30 horas de batería y estuche de carga inalambrica. Bluetooth 5.3 multipunto.',
@@ -168,7 +168,7 @@ VALUES
 
   (26, 18, 10, 'Polera básica Vela de algodón', 'polera-vela-algodón',
    'Algodon peinado de 180 g, cuello reforzado y calce regular. Disponible en negro, blanco y gris.',
-   19990, 14990, 100, 'AUR-0026', '/img/productos/polera-vela-algodón.svg', 4.6, 421, FALSE),
+   19990, 14990, 100, 'AUR-0026', '/img/productos/polera-vela-algodon.svg', 4.6, 421, FALSE),
 
   (27, 18, 12, 'Jeans recto Pampa', 'jeans-recto-pampa',
    'Denim con elastano para mayor comodidad, tiro medio y calce recto. Lavado azul oscuro.',
@@ -302,7 +302,7 @@ INSERT INTO pedido_items
   (pedido_id, producto_id, nombre_producto, imagen_url, precio_unitario, cantidad, subtotal)
 VALUES
   (1, 10, 'Audífonos Lumen Air ANC', '/img/productos/audifonos-lumen-air-anc.svg', 99990, 1, 99990),
-  (1, 26, 'Polera básica Vela de algodón', '/img/productos/polera-vela-algodón.svg', 14990, 1, 14990),
+  (1, 26, 'Polera básica Vela de algodón', '/img/productos/polera-vela-algodon.svg', 14990, 1, 14990),
   (1, 42, 'Peluche Pampa Oso 40 cm', '/img/productos/peluche-pampa-oso.svg', 14990, 2, 29980);
 
 -- ------------------------------------------------------------
